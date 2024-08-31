@@ -6,7 +6,7 @@ import React from "react";
 import useSWR from "swr";
 import Loading from "../loading";
 
-export default function page() {
+export default function Page() {
   const { data, error, isLoading } = useSWR<any>("/api/admin/orders", fetcher);
 
   return (

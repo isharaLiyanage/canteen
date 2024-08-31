@@ -11,7 +11,7 @@ type Product ={id: string,
     price:number,
     star: null |number,
     tag:[]}
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
 
     const { data, error, isLoading } = useSWR("/api/admin/products/"+params.id, fetcher);
  const product = data?.product
