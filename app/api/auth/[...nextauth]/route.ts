@@ -6,7 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/utils/connect";
 
-const AuthOption: NextAuthOptions = {
+const AuthOption:any = {
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET as string,
 
@@ -54,7 +54,7 @@ const AuthOption: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, account, user }) {
+    async jwt({ token, account, user }:any) {
       if (account) {
         token.accessToken = account.access_token;
         token.id = user.id;
@@ -63,7 +63,7 @@ const AuthOption: NextAuthOptions = {
 
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }:any) {
       return {
         ...session,
         user: {
@@ -85,4 +85,4 @@ const AuthOption: NextAuthOptions = {
 const handler = NextAuth(AuthOption);
 
 export { handler as GET, handler as POST };
-export const getAuthSession = () => getServerSession(AuthOption);
+export const getAuthSession  = () => getServerSession(AuthOption);
