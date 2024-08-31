@@ -1,0 +1,146 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+ 
+generator client {
+  provider = "prisma-client-js"
+}
+ 
+model User {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?         @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  accounts      Account[]
+  sessions      Session[]
+  orders Orders[]
+  country String?
+  role String @default("user")
+  Authenticator Authenticator[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+}
+ 
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+}
+ 
+// Optional for WebAuthn support
+model Authenticator {
+  id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+  credentialID         String  @unique
+  userId               String  @db.ObjectId
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Product {
+  id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+  name       String  
+  desc    String
+  image String[]
+  category String
+  price              Int
+  star Int?
+  tag String[]
+  orderItems OrderItem[]
+  }
+enum Oderstatus {
+  PROCESS
+  ON_THE_WAY
+  DELIVERED
+  CANCELLED
+  }
+   enum paymentMethod {
+  Cash_on_delivery
+  Paypal
+  Free
+  }
+  model Orders{
+   id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String  @db.ObjectId
+  user      User    @relation(fields: [userId], references: [id])
+  price Float
+  payment Boolean?
+  paymentMethod paymentMethod @default(Cash_on_delivery)
+  paymentId String?
+  paymentSource String?
+  address String?
+  map String?
+  status Oderstatus  @default(PROCESS)  
+  createAt DateTime @default(now())
+  seen Int? //for new order status
+  orderItems OrderItem[]
+  }
+  
+  model OrderItem {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  orderId   String  @db.ObjectId
+  order     Orders  @relation(fields: [orderId], references: [id])
+  productId String  @db.ObjectId
+  product Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+}
+   model Menu{
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  manu String
+  image String
+
+  }
+  model status {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+ totalSales Int?
+ newUsers Int?
+ newOrders Int?
+ DeliveredOrders Int?
+
+
+  }
