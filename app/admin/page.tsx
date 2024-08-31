@@ -36,7 +36,7 @@ type Details = {
 };
 async function page() {
   const data = await Get_Admin_Dashboard();
-  console.log(data);
+
   const details: Details = data.res.details;
   const { usersDetails, ...others } = details;
   return (

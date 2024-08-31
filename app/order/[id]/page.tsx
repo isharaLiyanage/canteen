@@ -32,7 +32,7 @@ const OrderTracking = async ({ params }: { params: { id: string } }) => {
 
   const data: Order = res.orders.orders;
 
-  console.log(data);
+
   return (
     <div className="container p-4 mx-auto">
       <div className="bg-glass p-6 rounded-lg shadow-md">

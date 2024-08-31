@@ -13,7 +13,7 @@ export async function getServerSideProps(id: string) {
     const orders = await response.json();
     return { orders };
   } catch (error) {
-    console.error("Error fetching data:", error);
+
     return { error: error }; // Send error as a prop
   }
 }

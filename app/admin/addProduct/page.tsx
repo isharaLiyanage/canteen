@@ -84,9 +84,9 @@ export default function Page() {
   const handleCreate = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setUpload({ loading: true, error: false, done: false, err: "" });
-    console.log(upload);
+
     const uploadImage = images.map(async (image, key) => {
-      console.log(key);
+  
       const data = new FormData();
       data.append("file", image);
       data.append("upload_preset", "upload");
@@ -110,12 +110,12 @@ export default function Page() {
           }));
         }
       } catch (err) {
-        console.log(err);
+    
       }
     });
     const uploadedUrls = await Promise.all(uploadImage);
     const urls = uploadedUrls.filter((url) => url);
-    console.log(urls);
+  
     if (urls) {
       const newProduct = {
         formData,
@@ -126,7 +126,7 @@ export default function Page() {
         method: "post",
         body: JSON.stringify(newProduct),
       });
-      console.log(post.ok);
+    
       if (post.ok) {
         setUpload((prevState) => ({
           done: true,

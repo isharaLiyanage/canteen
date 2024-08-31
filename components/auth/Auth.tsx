@@ -35,7 +35,7 @@ export default function Auth(props: any) {
             body: JSON.stringify(sign),
           });
           const data = await res.json();
-          console.log(data);
+        
 
           signIn("credentials", {
             email: sign.email,

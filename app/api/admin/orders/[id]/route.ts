@@ -17,7 +17,7 @@ export const GET = async (
       JSON.stringify({ status: 400, orders, message: "done" })
     );
   } catch (er) {
-    console.log(er);
+  
     return new NextResponse(
       JSON.stringify({
         er,
@@ -32,7 +32,7 @@ export const POST = async (
   req: NextRequest,
   { params }: { params: { id: string } }
 ) => {
-  console.log("dsd");
+ 
   try {
     const updatedOrder = await prisma.orders.update({
       where: {
@@ -47,7 +47,7 @@ export const POST = async (
       JSON.stringify({ status: 400, updatedOrder, message: "done" })
     );
   } catch (er) {
-    console.log(er);
+  
     return new NextResponse(
       JSON.stringify({
         er,

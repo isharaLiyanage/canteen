@@ -33,7 +33,7 @@ export default function ConformOrder({
         setError("action fail...");
       }
     } catch (error) {
-      console.log("Error updating order status:", error);
+  
     }
   };
   return (

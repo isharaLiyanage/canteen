@@ -28,7 +28,7 @@ type Details = {
   salesSummary: SalesSummary;
 };
 export default function Charts({ data }: { data: Details }) {
-  console.log(data);
+  
   const salesData = data.salesSummary;
   const SalesChartData = [
     {

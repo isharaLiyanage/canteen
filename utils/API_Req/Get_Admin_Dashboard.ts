@@ -13,7 +13,7 @@ export const Get_Admin_Dashboard = async () => {
     const res = await response.json();
     return { res };
   } catch (error) {
-    console.error("Error fetching data:", error);
+   
     return { error: error }; // Send error as a prop
   }
 };

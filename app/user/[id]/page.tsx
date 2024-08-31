@@ -32,7 +32,7 @@ type Order = {
 async function Page({ params }: { params: { id: string } }) {
   const res = await getServerSideProps(params.id);
   const data = res.res.data.orders;
-  console.log(data);
+
   if(data.length<1) return <div className=" flex w-full h-screen  text-white bg-[#24242467]  font-bold justify-center items-center"> Nothing Order Yet</div>
   return (
     <div>

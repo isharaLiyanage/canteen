@@ -8,7 +8,7 @@ interface Order {
   payment: true;
 }
 export default function Statues({ data }: { data: Order }) {
-  console.log(data.status)
+ 
   return (
     <>
       <h2 className="sm:text-2xl mb-4 text-xl font-semibold">

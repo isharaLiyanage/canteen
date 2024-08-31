@@ -99,7 +99,7 @@ export function Orders({ OderData }: { OderData: DataType }) {
         toast("Failed to update order status");
       }
     } catch (error) {
-      console.log("Error updating order status:", error);
+
     }
   };
   const columns: ColumnDef<Order>[] = [
@@ -181,7 +181,7 @@ export function Orders({ OderData }: { OderData: DataType }) {
       header: "Payment",
       cell: ({ row }) => {
         const payment = row.original.paymentSource || "Cache On delivery";
-        console.log(row.original);
+  
         return <div className="lowercase">{payment}</div>;
       },
     },

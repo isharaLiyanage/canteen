@@ -19,7 +19,7 @@ export const getServerSideProps = async (id: string) => {
     const res = await response.json();
     return { res };
   } catch (error) {
-    console.error("Error fetching data:", error);
+    
     return { error: error }; // Send error as a prop
   }
 };

@@ -104,7 +104,7 @@ export default function EditProduct({product}:{product:Product}) {
   const handleCreate = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setUpload({ loading: true, error: false, done: false, err: "" });
-    console.log(upload);
+  
     // const uploadImage = images.map(async (image, key) => {
     //   console.log(key);
     //   const data = new FormData();
@@ -146,7 +146,7 @@ export default function EditProduct({product}:{product:Product}) {
         method: "post",
         body: JSON.stringify(newProduct),
       });
-      console.log(post.ok);
+   
       if (post.ok) {
         setUpload((prevState) => ({
           done: true,
@@ -171,7 +171,7 @@ export default function EditProduct({product}:{product:Product}) {
       }
     
   };
-console.log(formData)
+
   return (
     <div className=" bg-glass h-screen">
 

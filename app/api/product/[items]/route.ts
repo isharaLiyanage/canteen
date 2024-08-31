@@ -7,7 +7,7 @@ export const GET = async (
   { params }: { params: { items: string } }
 ) => {
   const items = params.items;
-  console.log(items);
+
   try {
     if (items === "All" || items === "undefined") {
       const product = await prisma.product.findMany();

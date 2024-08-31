@@ -39,7 +39,7 @@ export default function AddMenu() {
             method: "post",
             body: JSON.stringify(newProduct),
           });
-          console.log(upload);
+   
           if (upload.ok) {
             setFile(undefined);
             setInputValue("");
@@ -50,7 +50,7 @@ export default function AddMenu() {
           setLoad(false);
         }
       } catch (err) {
-        console.log(err);
+      
         setError("Something Wrong");
         setLoad(false);
       }

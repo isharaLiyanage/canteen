@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth/next";
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession();
-  console.log(session?.role);
+ 
   // if (session?.role !== "admin") return null;
   try {
     const currentWeekRange = weekRange(0);
@@ -142,7 +142,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       })
     );
   } catch (er) {
-    console.log(er);
+    
     return new NextResponse(
       JSON.stringify({
         er,

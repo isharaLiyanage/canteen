@@ -15,7 +15,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
     const { data, error, isLoading } = useSWR("/api/admin/products/"+params.id, fetcher);
  const product = data?.product
-console.log(data?.product)
+
 if(isLoading)  return (
   <div className=""> Loading ...</div>
 )

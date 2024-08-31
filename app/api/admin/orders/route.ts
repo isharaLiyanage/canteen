@@ -14,7 +14,7 @@ export const GET = async () => {
       JSON.stringify({ status: 400, orders, message: "done" })
     );
   } catch (er) {
-    console.log(er);
+  
     return new NextResponse(
       JSON.stringify({
         er,

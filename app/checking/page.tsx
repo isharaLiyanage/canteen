@@ -41,11 +41,11 @@ function Page() {
     // );
 
     // const res = await response.json();
-    console.log(data);
+    
     setPayment(data);
     toast("Payment Success ");
   };
-  console.log(payment);
+ 
 
   const handelClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -66,7 +66,7 @@ function Page() {
       const res = await data.json();
 
       if (res.status === 400) {
-        console.log("err" + res.message);
+   
         setUpload({
           ...upload,
           done: false,
@@ -88,7 +88,7 @@ function Page() {
         route.push("/order/" + res.id);
       }
     } catch (err: any) {
-      console.log(err);
+
       setUpload({ ...upload, done: false, loading: false, error: err.message });
     }
   };

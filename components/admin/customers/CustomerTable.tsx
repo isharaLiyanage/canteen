@@ -59,8 +59,7 @@ export function CustomerTable({ users }: { users: Data }) {
       header: () => <div className="text-right">Orders</div>,
       cell: ({ row }) => {
         const items = row.original.orders as OrdersType[];
-        console.log(row.original);
-        console.log(items);
+     
         return (
           <div className="font-medium text-right">
             {items.length ? (

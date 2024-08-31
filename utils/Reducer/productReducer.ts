@@ -1,4 +1,4 @@
-import { error } from "console";
+
 
 type StateType = {
   product_type: string | string[] | undefined;

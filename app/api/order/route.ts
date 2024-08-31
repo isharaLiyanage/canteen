@@ -33,7 +33,7 @@ export const POST = async (req: NextRequest) => {
   try {
     const user = await getServerSession();
     const data: product = await req.json();
-    console.log(data);
+   
     const isValidData = validateOrderData(data, user); //validation data
     const isValidPrice = validateOrderPrice(data); //validation price
     if (!isValidData || !isValidPrice) {
@@ -89,7 +89,7 @@ export const POST = async (req: NextRequest) => {
       );
     }
   } catch (err) {
-    console.log(err);
+   
     return new NextResponse(
       JSON.stringify({
         err,

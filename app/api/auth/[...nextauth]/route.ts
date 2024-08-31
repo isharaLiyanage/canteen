@@ -47,7 +47,7 @@ const AuthOption: NextAuthOptions = {
           }
         } catch (error: any) {
           const { statusCode, message } = error;
-          console.error(message + "sds");
+       
           throw new Error(message);
         }
       },

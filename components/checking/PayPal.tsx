@@ -30,10 +30,10 @@ export default function PaypalButton({ setPay, total }: any) {
     data,
     actions
   ) => {
-    console.log(data);
+
 
     if (data.orderID) {
-      console.log(data);
+ 
       setPay(data);
     }
   };

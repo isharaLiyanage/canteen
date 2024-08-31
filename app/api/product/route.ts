@@ -15,7 +15,7 @@ export const POST = async (req: NextRequest) => {
       JSON.stringify({ upload, status: 200, massage: "Complete" })
     );
   } catch (err) {
-    console.log(err);
+  
     return new NextResponse(
       JSON.stringify({ status: 400, massage: "Can not upload to database" })
     );

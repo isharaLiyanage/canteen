@@ -17,7 +17,7 @@ export const GET = async (
       JSON.stringify({ status: 400, orders, message: "done" })
     );
   } catch (er) {
-    console.log(er);
+  
     return new NextResponse(
       JSON.stringify({
         er,
@@ -33,7 +33,7 @@ export const POST = async (
   { params }: { params: { id: string } }
 ) => {
   const session = await getServerSession();
-  console.log(session);
+
   try {
     if (session?.user) {
       const updatedOrder = await prisma.orders.update({
@@ -53,7 +53,7 @@ export const POST = async (
         JSON.stringify({ status: 400, message: "Your Not Authorized" })
       );
   } catch (er) {
-    console.log(er);
+
     return new NextResponse(
       JSON.stringify({
         er,
