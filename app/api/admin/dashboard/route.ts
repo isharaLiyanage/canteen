@@ -2,7 +2,7 @@ import prisma from "@/utils/connect";
 import { NextRequest, NextResponse } from "next/server";
 import { startOfWeek, endOfWeek, subWeeks } from "date-fns";
 import { getServerSession } from "next-auth/next";
-import { AuthOption } from "../../auth/[...nextauth]/route";
+
 export const GET = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession();
   console.log(session?.role);
